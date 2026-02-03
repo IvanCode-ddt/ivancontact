@@ -227,3 +227,50 @@ html {
 .fa-steam {
     color: #046297;
 }
+
+/* 1. Định nghĩa chuyển động bay lên */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. Áp dụng cho các nút link */
+.btn-link {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* 3. Tạo độ trễ cho từng nút (Nút 1 hiện trước, nút 2 hiện sau...) */
+.btn-link:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.btn-link:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.btn-link:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.btn-link:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.btn-link:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+/* 4. Hiệu ứng cho cụm icon footer hiện ra sau cùng */
+.social-icons {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.7s;
+}
