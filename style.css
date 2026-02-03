@@ -1,0 +1,141 @@
+/* Reset cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Tắt vệt xanh khi chạm trên điện thoại */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #1a1a1a; /* Màu nền dự phòng */
+    /* Thay background.jpg bằng ảnh nền của bạn */
+    background: url('https://images.unsplash.com/photo-1557683311-eac922347aa1') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Làm tối nền để nổi bật nội dung */
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px; /* Độ rộng tối ưu cho Mobile */
+    padding: 50px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Avatar profile */
+.avatar-wrapper {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.7);
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Khu vực SĐT */
+.info-card {
+    text-align: center;
+    margin-bottom: 40px;
+    cursor: pointer;
+    position: relative;
+}
+
+.info-card h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+    opacity: 0.9;
+}
+
+.info-card p {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.tooltip {
+    visibility: hidden;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Các nút Link */
+.links-group {
+    width: 100%;
+}
+
+.btn-link {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    letter-spacing: 2px;
+    font-weight: 300;
+    transition: all 0.3s ease;
+}
+
+.btn-link:active {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0.98);
+}
+
+/* Social Icons */
+.social-icons {
+    margin-top: auto;
+    display: flex;
+    gap: 30px;
+    font-size: 1.5rem;
+    padding-top: 30px;
+}
+
+.social-icons a {
+    color: white;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    opacity: 1;
+}
