@@ -3,19 +3,26 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent; /* Tắt vệt xanh khi chạm trên điện thoại */
+    -webkit-tap-highlight-color: transparent;
+    /* Tắt vệt xanh khi chạm trên điện thoại */
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    background: #1a1a1a; /* Màu nền dự phòng */
-    /* Thay background.jpg bằng ảnh nền của bạn */
-    background: url('https://images.unsplash.com/photo-1557683311-eac922347aa1') no-repeat center center fixed;
+    background: #1a1a1a;
+    /* Tối ưu ảnh nền cho Mobile */
+    background: url('images/background.webp') no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
+    /* Fix lỗi chiều cao Safari trên iPhone */
+    min-height: -webkit-fill-available;
     display: flex;
     justify-content: center;
     color: white;
+}
+
+html {
+    height: -webkit-fill-available;
 }
 
 .overlay {
@@ -24,7 +31,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Làm tối nền để nổi bật nội dung */
+    background: rgba(0, 0, 0, 0.4);
     z-index: 0;
 }
 
@@ -32,11 +39,13 @@ body {
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 420px; /* Độ rộng tối ưu cho Mobile */
+    max-width: 420px;
     padding: 50px 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
+    /* Đảm bảo container chiếm hết màn hình để đẩy footer xuống đáy */
 }
 
 /* Avatar profile */
@@ -47,7 +56,7 @@ body {
     border: 3px solid rgba(255, 255, 255, 0.7);
     overflow: hidden;
     margin-bottom: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .avatar {
@@ -94,7 +103,7 @@ body {
     transition: opacity 0.3s;
 }
 
-/* Các nút Link */
+/* Các nút Link chính */
 .links-group {
     width: 100%;
 }
@@ -110,32 +119,111 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.6);
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 8px;
     letter-spacing: 2px;
-    font-weight: 300;
+    font-weight: 400;
     transition: all 0.3s ease;
 }
 
+/* Hiệu ứng khi nhấn nút trên điện thoại */
 .btn-link:active {
     background: rgba(255, 255, 255, 0.3);
-    transform: scale(0.98);
+    transform: scale(0.97);
 }
 
-/* Social Icons */
+/* --- PHẦN SOCIAL ICONS (FOOTER) --- */
 .social-icons {
     margin-top: auto;
+    /* Đẩy cụm icon xuống dưới cùng */
     display: flex;
-    gap: 30px;
-    font-size: 1.5rem;
-    padding-top: 30px;
+    gap: 40px;
+    /* Khoảng cách giữa các icon */
+    padding: 40px 0 20px 0;
+    justify-content: center;
 }
 
 .social-icons a {
     color: white;
+    text-decoration: none;
+    font-size: 2.2rem;
+    /* Tăng kích thước icon theo yêu cầu */
     opacity: 0.8;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    display: inline-block;
 }
 
-.social-icons a:hover {
+/* Hiệu ứng khi ấn vào icon mạng xã hội */
+.social-icons a:active {
     opacity: 1;
+    transform: scale(1.2);
+    /* Phóng to nhẹ khi chạm */
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+    /* Tạo hiệu ứng phát sáng nhẹ */
+}
+
+/* Responsive cho màn hình cực nhỏ */
+@media (max-height: 667px) {
+    .container {
+        padding: 30px 20px;
+    }
+
+    .avatar-wrapper {
+        width: 120px;
+        height: 120px;
+    }
+
+    .info-card {
+        margin-bottom: 20px;
+    }
+}
+
+/* màu steam */
+.social-icons a:active .fa-steam {
+    color: #1e7fb7 !important;
+    /* Màu xanh sáng đặc trưng của Steam */
+    filter: drop-shadow(0 0 10px #66c0f4);
+    /* Tạo hiệu ứng tỏa sáng xanh */
+    opacity: 1;
+}
+
+/* màu nổi instagram */
+.social-icons a:active .fa-instagram {
+    color: #cb35b5;
+    filter: drop-shadow(0 0 10px #e1306c);
+}
+
+/* màu nổi facebook */
+.social-icons a:active .fa-facebook-f {
+    color: #1877f2;
+    filter: drop-shadow(0 0 10px #1877f2);
+}
+
+/* màu nổi tiktok */
+.social-icons a:active .fa-tiktok {
+    color: #ffffff;
+    filter: drop-shadow(0 0 10px #ff0050);
+}
+
+/* Màu Instagram (Hồng tím) */
+.fa-instagram {
+    color: #E4405F;
+}
+
+/* Màu Facebook (Xanh biển) */
+.fa-facebook-f {
+    color: #1877F2;
+}
+
+/* Màu TikTok (Trắng hoặc Cyan/Red) */
+.fa-tiktok {
+    color: #00F2EA;
+    /* Màu xanh Cyan của TikTok nổi bật trên nền tối */
+    text-shadow: 2px 0 0 #ff0050;
+    /* Hiệu ứng đổ bóng màu đỏ đặc trưng của TikTok */
+}
+
+/* Màu Steam (Xanh sáng) */
+.fa-steam {
+    color: #046297;
 }
